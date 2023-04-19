@@ -1,0 +1,75 @@
+﻿@model IEnumerable<RestaurantApp.Models.RestaurantInfo>
+
+<p>
+    @Html.ActionLink("AddRestaurant", "AddRestaurantInfo")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.zipcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.website)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CuisineId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pricerange)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.address)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.zipcode)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.phone)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.website)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CuisineId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.rating)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.pricerange)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "EditRestaurantInfo", new { id = item.id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+        @Html.ActionLink("Delete", "DeleteRestaurantInfo", new { id = item.id })
+    </td>
+</tr>
+}
+
+</table>
