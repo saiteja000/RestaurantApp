@@ -134,27 +134,6 @@ namespace RestaurantApp.Controllers
 
         }
 
-        // POST: Restaurant/Delete/5
-        //[HttpDelete]
-        //public ActionResult DeleteRestaurantInfo(int id)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add delete logic here
-
-        //        RestaurantRepo restaurantRepo = new RestaurantRepo();
-                
-        //        if (restaurantRepo.DeleteRestaurantInfo(id))
-        //        {
-        //            ViewBag.AlertMsg = "RestaurantInfo details deleted successfully";
-
-        //        }
-        //        return RedirectToAction("GetAllRestaurants");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+       
     }
 }
