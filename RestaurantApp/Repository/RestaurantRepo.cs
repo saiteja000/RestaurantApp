@@ -59,12 +59,12 @@ namespace RestaurantApp.Repository
 
         public bool AddRestaurantInfo(RestaurantInfo restaurant)
         {
-            
-           connection();
 
-                var command = new SqlCommand(
-                    "INSERT INTO RestaurantInfo (id,name, address, zipcode, phone, website, CuisineId, rating, priceRange) " +
-                    "VALUES (@Id, @Name, @Address, @Zipcode, @Phone, @Website, @CuisineId, @Rating, @PriceRange)", con);
+            connection();
+
+            var command = new SqlCommand(
+                "INSERT INTO RestaurantInfo (id,name, address, zipcode, phone, website, CuisineId, rating, priceRange) " +
+                "VALUES (@Id, @Name, @Address, @Zipcode, @Phone, @Website, @CuisineId, @Rating, @PriceRange)", con);
 
             command.Parameters.AddWithValue("@Id", restaurant.id);
             command.Parameters.AddWithValue("@Name", restaurant.name);
@@ -92,16 +92,80 @@ namespace RestaurantApp.Repository
 
         }
 
+        public bool AddRestaurantMenu(RestaurantMenu restaurantMenu)
+        {
+            connection();
+
+            var command = new SqlCommand(
+                "INSERT INTO RestaurantMenu (Id,MenuItem,Description,Price) " +
+                "VALUES (@ID,@MenuItem,@Description,@Price)", con);
+
+            command.Parameters.AddWithValue("@ID", restaurantMenu.Id);
+            command.Parameters.AddWithValue("@MenuItem", restaurantMenu.MenuItem);
+            command.Parameters.AddWithValue("@Description", restaurantMenu.Description);
+            command.Parameters.AddWithValue("@Price", restaurantMenu.Price);
+
+            con.Open();
+            int i = command.ExecuteNonQuery();
+            con.Close();
+            if (i >= 1)
+            {
+
+                return true;
+
+            }
+            else
+            {
+
+                return false;
+            }
+        }
+
+        public bool AddMenuItemType(MenuItemType menuItemType)
+        {
+            connection();
+
+            var command = new SqlCommand(
+                "INSERT INTO MenuItemType (Id,Type,RestaurantId,Description,Price) " +
+                "VALUES (@ID,@Type,@RestaurantId,@Description,@Price)", con);
+
+            command.Parameters.AddWithValue("@ID", menuItemType.Id);
+            command.Parameters.AddWithValue("@Type", menuItemType.Type);
+            command.Parameters.AddWithValue("@RestaurantId", menuItemType.RestaurantId);
+            command.Parameters.AddWithValue("@Description", menuItemType.Description);
+            command.Parameters.AddWithValue("@Price", menuItemType.Price);
+
+            con.Open();
+            int i = command.ExecuteNonQuery();
+            con.Close();
+            if (i >= 1)
+            {
+
+                return true;
+
+            }
+            else
+            {
+
+                return false;
+            }
+        }
+
+
+
         public bool AddCuisine(Cuisine cuisine)
         {
             connection();
 
             var command = new SqlCommand(
-                "INSERT INTO Cuisine (id,name) " +
-                "VALUES (@ID,@Name)", con);
+                "INSERT INTO Cuisine (id,name,nutritionInfo,texture) " +
+                "VALUES (@ID,@Name,@NutritionInfo,@Texture)", con);
 
             command.Parameters.AddWithValue("@Id", cuisine.id);
             command.Parameters.AddWithValue("@Name", cuisine.name);
+            command.Parameters.AddWithValue("@NutritionInfo", cuisine.nutritionInfo);
+            command.Parameters.AddWithValue("@Texture", cuisine.texture);
+
             con.Open();
             int i = command.ExecuteNonQuery();
             con.Close();
@@ -122,7 +186,7 @@ namespace RestaurantApp.Repository
         {
 
             connection();
-            SqlCommand command = new SqlCommand("Update RestaurantInfo SET id = @Id ,name = @Name, address = @Address, zipcode = @Zipcode, phone = @Phone, website = @Website, CuisineId = @CuisineId, rating = @Rating, priceRange = @PriceRange where id = @Id" , con);
+            SqlCommand command = new SqlCommand("Update RestaurantInfo SET id = @Id ,name = @Name, address = @Address, zipcode = @Zipcode, phone = @Phone, website = @Website, CuisineId = @CuisineId, rating = @Rating, priceRange = @PriceRange where id = @Id", con);
 
             command.Parameters.AddWithValue("@Id", restaurant.id);
             command.Parameters.AddWithValue("@Name", restaurant.name);

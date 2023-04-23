@@ -1,8 +1,12 @@
 ﻿@model IEnumerable<RestaurantApp.Models.RestaurantInfo>
+<br />
+<div>
 
-<p>
-    @Html.ActionLink("AddRestaurant", "AddRestaurantInfo")
-</p>
+    @Html.ActionLink("AddRestaurant", "AddRestaurantInfo", new { @class = "btn btn-danger" })
+
+</div>
+<br />
+
 <table class="table">
     <tr>
         <th>
@@ -35,41 +39,41 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.id)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.address)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.zipcode)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.phone)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.website)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CuisineId)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.rating)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.pricerange)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "EditRestaurantInfo", new { id = item.id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.id }) |
-        @Html.ActionLink("Delete", "DeleteRestaurantInfo", new { id = item.id })
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.zipcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.website)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CuisineId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pricerange)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditRestaurantInfo", new { id = item.id }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Delete", "DeleteRestaurantInfo", new { id = item.id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
 
 </table>
