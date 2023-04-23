@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
+
+
 namespace RestaurantApp
 {
     public class RouteConfig
@@ -13,10 +15,12 @@ namespace RestaurantApp
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Restaurant", action = "AddRestaurantInfo", id = UrlParameter.Optional }
+            name: "Default",
+            url: "{controller}/{action}/{id}",
+            defaults: new { controller = "Restaurant", action = "GetAllRestaurants", id = UrlParameter.Optional }
             );
         }
     }
